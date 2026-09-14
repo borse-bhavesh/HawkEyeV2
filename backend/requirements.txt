@@ -12,3 +12,4 @@ torch
 ultralytics
 pytest
 requests
+psycopg2
