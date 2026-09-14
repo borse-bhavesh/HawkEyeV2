@@ -13,3 +13,4 @@ ultralytics
 pytest
 requests
 psycopg2
+lap>=0.5.12
