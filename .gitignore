@@ -46,7 +46,6 @@ Thumbs.db
 
 # Media / Uploaded Videos / Evidence
 media/
-evidence/
 
 # Packaging
 *.egg-info/
