@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: hawkeye-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: hawkeye
+      POSTGRES_USER: hawkeye
+      POSTGRES_PASSWORD: hawkeye
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - hawkeye_postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hawkeye -d hawkeye"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  hawkeye_postgres_data:

@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+!.env.example
+
+# Testing / Scratch
+.pytest_cache/
+.coverage
+htmlcov/
+scratch/
+recovery_tests/
+
+# Frontend / Node
+node_modules/
+dist/
+build/
+.vite/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Databases
+*.db
+*.sqlite3
+
+# AI model files
+*.pt
+*.onnx
+
+# Media / Uploaded Videos / Evidence
+media/
+evidence/
+
+# Packaging
+*.egg-info/
