@@ -14,3 +14,4 @@ pytest
 requests
 psycopg2
 lap>=0.5.12
+supabase>=2.3.4
