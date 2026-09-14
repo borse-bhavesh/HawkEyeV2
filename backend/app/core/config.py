@@ -1,6 +1,6 @@
 from functools import lru_cache
 
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from app.services.detection.config import DetectionConfig
@@ -24,6 +24,18 @@ class Settings(BaseSettings):
 
     media_root: str = Field(default="media")
 
+    storage_provider: str = Field(default="local")  # 'local' or 'supabase'
+    supabase_url: str | None = None
+    supabase_service_role_key: str | None = Field(default=None, alias="supabase_secret_key")
+    supabase_storage_bucket: str = "hawkeye-media"
+
+    @model_validator(mode='after')
+    def validate_supabase_config(self):
+        if self.storage_provider == 'supabase':
+            if not self.supabase_url or not self.supabase_service_role_key:
+                raise ValueError("supabase_url and supabase_service_role_key (or SUPABASE_SECRET_KEY) must be set when storage_provider is 'supabase'")
+        return self
+        
     yolo_model_name: str = "yolo11n.pt"
 
     yolo_confidence_threshold: float = Field(
@@ -60,4 +72,4 @@ def get_detection_config() -> DetectionConfig:
     return DetectionConfig(
         model_name=s.yolo_model_name,
         confidence_threshold=s.yolo_confidence_threshold,
-    )
+    )
