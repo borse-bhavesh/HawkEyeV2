@@ -1,5 +1,5 @@
 // Get the base API URL from environment variables, fallback to local default
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://hawkeye-backend-6zjj.onrender.com/api/v1" || 'http://localhost:8000/api/v1';
 
 /**
  * A tiny wrapper around native fetch that standardizes error handling.
